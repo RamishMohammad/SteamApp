@@ -1,12 +1,32 @@
 <resources>
     <string name="app_name">SteamApp</string>
     <string name="action_settings">Settings</string>
+
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
+    <string name="sign_in_fragment_label">Sign In Fragment</string>
+    <string name="register_fragment_label">Register Fragment</string>
+    <string name="profile_fragment_label">Profile Fragment</string>
+    <string name="explore_fragment_label">Explore Fragment</string>
+    <string name="compare_fragment_label">Compare Fragment</string>
+    <string name="search_fragment_label">Search Fragment</string>
+    <string name="results_fragment_label">Results Fragment</string>
+    <string name="game_details_fragment_label">Game Details Fragment</string>
+
+
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="hello_sign_in_fragment">Hello first fragment</string>
+    <string name="hello_register_fragment">Hello first fragment</string>
+    <string name="hello_profile_fragment">Hello first fragment</string>
+    <string name="hello_explore_fragment">Hello first fragment</string>
+    <string name="hello_compare_fragment">Hello first fragment</string>
+    <string name="hello_search_fragment">Hello first fragment</string>
+    <string name="hello_results_fragment">Hello first fragment</string>
+    <string name="hello_game_details_fragment">Hello first fragment</string>
+
 </resources>
