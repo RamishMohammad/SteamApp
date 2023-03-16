@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.example.steamapp.FirstFragment"
+        android:name="com.example.steamapp.ui.FirstFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
 
@@ -18,7 +18,7 @@
 
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.example.steamapp.SecondFragment"
+        android:name="com.example.steamapp.ui.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
 
@@ -29,7 +29,7 @@
 
     <fragment
         android:id="@+id/SignInFragment"
-        android:name="com.example.steamapp.SignInFragment"
+        android:name="com.example.steamapp.ui.SignInFragment"
         android:label="@string/sign_in_fragment_label"
         tools:layout="@layout/fragment_sign_in">
 
@@ -40,7 +40,7 @@
 
     <fragment
         android:id="@+id/RegisterFragment"
-        android:name="com.example.steamapp.RegisterFragment"
+        android:name="com.example.steamapp.ui.RegisterFragment"
         android:label="@string/register_fragment_label"
         tools:layout="@layout/fragment_register">
 
@@ -51,42 +51,42 @@
 
     <fragment
         android:id="@+id/ProfileFragment"
-        android:name="com.example.steamapp.ProfileFragment"
+        android:name="com.example.steamapp.ui.ProfileFragment"
         android:label="@string/profile_fragment_label"
         tools:layout="@layout/fragment_profile">
     </fragment>
 
     <fragment
         android:id="@+id/ExploreFragment"
-        android:name="com.example.steamapp.ExploreFragment"
+        android:name="com.example.steamapp.ui.ExploreFragment"
         android:label="@string/explore_fragment_label"
         tools:layout="@layout/fragment_explore">
     </fragment>
 
     <fragment
         android:id="@+id/CompareFragment"
-        android:name="com.example.steamapp.CompareFragment"
+        android:name="com.example.steamapp.ui.CompareFragment"
         android:label="@string/compare_fragment_label"
         tools:layout="@layout/fragment_compare">
     </fragment>
 
     <fragment
         android:id="@+id/SearchFragment"
-        android:name="com.example.steamapp.SearchFragment"
+        android:name="com.example.steamapp.ui.SearchFragment"
         android:label="@string/search_fragment_label"
         tools:layout="@layout/fragment_search">
     </fragment>
 
     <fragment
         android:id="@+id/ResultsFragment"
-        android:name="com.example.steamapp.ResultsFragment"
+        android:name="com.example.steamapp.ui.ResultsFragment"
         android:label="@string/results_fragment_label"
         tools:layout="@layout/fragment_results">
     </fragment>
 
     <fragment
         android:id="@+id/GameDetailsFragment"
-        android:name="com.example.steamapp.GameDetailsFragment"
+        android:name="com.example.steamapp.ui.GameDetailsFragment"
         android:label="@string/game_details_fragment_label"
         tools:layout="@layout/fragment_game_details">
     </fragment>
