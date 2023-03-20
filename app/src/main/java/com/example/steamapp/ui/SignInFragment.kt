@@ -8,9 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.steamapi.api.AuthenticateUserRequest
-import com.example.steamapi.api.SteamAuth
-import com.example.steamapi.api.SteamService
+import com.example.steamapp.api.AuthenticateUserRequest
+import com.example.steamapp.api.SteamService
 import com.example.steamapp.databinding.FragmentSignInBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope

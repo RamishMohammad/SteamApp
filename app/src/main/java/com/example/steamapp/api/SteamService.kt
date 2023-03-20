@@ -1,4 +1,4 @@
-package com.example.steamapi.api
+package com.example.steamapp.api
 
 import com.squareup.moshi.Json
 import retrofit2.Response
