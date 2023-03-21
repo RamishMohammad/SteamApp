@@ -11,7 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.room.Room
 import com.example.steamapp.R
-import com.example.steamapp.api.SteamService
+import com.example.steamapp.api.SteamWebService
 import com.example.steamapp.data.AppDataBase
 import com.example.steamapp.data.UserDao
 import com.example.steamapp.databinding.FragmentSignInBinding
@@ -26,7 +26,7 @@ class SignInFragment : Fragment() {
     }
 
     private var _binding: FragmentSignInBinding? = null
-    private lateinit var steamService: SteamService
+    private lateinit var steamWebService: SteamWebService
     private lateinit var userDao: UserDao
 
     private val binding get() = _binding!!
@@ -42,7 +42,7 @@ class SignInFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        steamService = SteamService.create()
+        steamWebService = SteamWebService.create()
         val db = Room.databaseBuilder(
             requireContext().applicationContext,
             AppDataBase::class.java, "my-db"
@@ -61,7 +61,7 @@ class SignInFragment : Fragment() {
                 if (user != null) {
                     // Valid user
                     Log.d(TAG, "User login successful")
-                    val url = "${SteamService.BASE_URL}ISteamUser/GetPlayerSummaries/v2/?key=${SteamService.API_KEY}&steamids=$steamid"
+                    val url = "${SteamWebService.BASE_URL}ISteamUser/GetPlayerSummaries/v2/?key=${SteamWebService.API_KEY}&steamids=$steamid"
                     Log.d(TAG, "API URL: $url")
                     // TODO: Handle the response accordingly
                 } else {

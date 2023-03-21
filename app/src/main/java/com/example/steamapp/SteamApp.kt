@@ -1,7 +1,7 @@
 package com.example.steamapp
 
 import android.app.Application
-import com.example.steamapp.api.SteamService
+import com.example.steamapp.api.SteamWebService
 import com.example.steamapp.data.AppListStorage
 import kotlinx.coroutines.*
 
@@ -12,7 +12,7 @@ import kotlinx.coroutines.*
  * overwrite the app list.
  */
 class SteamApp : Application() {
-    private val service = SteamService.create()
+    private val service = SteamWebService.create()
 
     override fun onCreate() {
         super.onCreate()

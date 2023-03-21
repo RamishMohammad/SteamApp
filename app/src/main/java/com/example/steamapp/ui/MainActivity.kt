@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         // Top Nav Bar //////////////////////
         setSupportActionBar(binding.toolbar)
 
-        val navController = findNavController(com.example.steamapp.R.id.nav_host_fragment_content_main)
+        val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
         ////////////////////////////////////
