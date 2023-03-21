@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.provider.ContactsContract.Profile
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.AdapterView
+import android.widget.GridView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -59,7 +62,6 @@ class MainActivity : AppCompatActivity() {
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.frame_layout, fragment)
         fragmentTransaction.commit()
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
