@@ -1,5 +1,6 @@
 package com.example.steamapp.api
 
+import com.example.steamapp.data.AppListStorage
 import com.squareup.moshi.Json
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -19,8 +20,26 @@ interface SteamService {
         @Query("key") apiKey: String = API_KEY,
     ) : Response<SteamAuthResponse>
 
+    @GET("ISteamApps/GetAppList/v2/")
+    suspend fun getAppList(
+        @Query("key") apiKey: String = API_KEY
+    ) : Response<GetAppListResponse>
+
+    /**
+     * Returns the information about a set of apps from their app ids.
+     * TODO: Verify this is correct, endpoint name suggests it is
+     *
+     * @param appids List of UInt app ids
+     * @return A list containg the app details for each id
+     */
+    @GET("api/appdetails")
+    suspend fun getAppDetails(
+        @Query("appids") appids: List<UInt>
+    ) : Response<List<AppDetails>>
+
     companion object {
         const val BASE_URL = "https://api.steampowered.com/"
+        const val STORE_URL = "https://store.steampowered.com/api/"
         const val API_KEY = "C5047CA4CB69A58EAD6BC1B6C8D895C7"
 
         fun create() : SteamService {
@@ -51,4 +70,27 @@ data class SteamAuth(
     val ticket: String
 )
 
+data class GetAppListResponse(
+    val applist: AppList
+)
 
+// Container for list of all apps returned from `getAppList()`
+data class AppList(
+    val apps: List<App>
+)
+
+// Bare minimum data about an app from GetAppList
+data class App(
+    val appid: Int,
+    val name: String
+)
+
+data class AppDetails(
+    val success: Boolean,
+    val data: AppData?,
+)
+
+data class AppData(
+    val name: String,
+    val detailed_description: String,
+)
