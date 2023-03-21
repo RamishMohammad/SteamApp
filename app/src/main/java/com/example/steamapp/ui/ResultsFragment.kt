@@ -21,7 +21,7 @@ class ResultsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentResultsBinding.inflate(inflater, container, false)
         return binding.root
