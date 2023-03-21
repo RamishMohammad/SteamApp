@@ -47,7 +47,7 @@ interface SteamStoreService {
      * TODO: Verify this is correct, endpoint name suggests it is
      *
      * @param appids List of UInt app ids
-     * @return A list containg the app details for each id
+     * @return A list containing the app details for each id
      */
     @GET("appdetails")
     suspend fun getAppDetails(

@@ -49,13 +49,6 @@
     </fragment>
 
     <fragment
-        android:id="@+id/ExploreFragment"
-        android:name="com.example.steamapp.ui.ExploreFragment"
-        android:label="@string/explore_fragment_label"
-        tools:layout="@layout/fragment_explore">
-    </fragment>
-
-    <fragment
         android:id="@+id/CompareFragment"
         android:name="com.example.steamapp.ui.CompareFragment"
         android:label="@string/compare_fragment_label"
