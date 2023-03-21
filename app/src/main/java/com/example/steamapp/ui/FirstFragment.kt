@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.room.Room
 import com.example.steamapp.R
+import com.example.steamapp.data.AppDataBase
 import com.example.steamapp.databinding.FragmentFirstBinding
 
 /**
@@ -19,6 +21,9 @@ class FirstFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    val database: AppDataBase by lazy {
+        Room.databaseBuilder(requireContext(), AppDataBase::class.java, "my-db").build()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +40,10 @@ class FirstFragment : Fragment() {
 
         binding.buttonFirst.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SignInFragment)
+        }
+
+        binding.buttonSecond.setOnClickListener {
+            findNavController().navigate(R.id.action_FirstFragment_to_SignUpFragment)
         }
     }
 

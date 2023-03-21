@@ -38,13 +38,16 @@ class SignInFragment : Fragment() {
 
         binding.signInButton.setOnClickListener {
             val steamid = binding.usernameEditText.text?.toString() ?: ""
-            val password = binding.passwordEditText.text.toString()
+            Log.d(TAG, "steamid: $steamid")
             val errorMessage = "An error occurred. Please try again later."
 
 
             if (steamid.isNotEmpty()) {
                 GlobalScope.launch(Dispatchers.IO) {
-                    val request = AuthenticateUserRequest(steamid, password, SteamService.API_KEY)
+                    val request = AuthenticateUserRequest(steamid,SteamService.API_KEY)
+                    val url = "${SteamService.BASE_URL}ISteamUser/GetPlayerSummaries/v2/?key=${SteamService.API_KEY}&steamids=$steamid"
+
+                    Log.d(TAG, "API URL: $url")
                     val response = steamService.authenticateUser(request)
                     if (response.isSuccessful) {
                         val steamAuth = response.body()?.response

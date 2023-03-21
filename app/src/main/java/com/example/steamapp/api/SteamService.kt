@@ -13,15 +13,15 @@ import retrofit2.http.POST
 
 
 interface SteamService {
-    @POST("ISteamUserAuth/AuthenticateUser/v0001/")
+    @POST("ISteamUser/GetPlayerSummaries/v2/")
     suspend fun authenticateUser(
         @Body requestBody: AuthenticateUserRequest,
+        @Query("key") apiKey: String = API_KEY,
     ) : Response<SteamAuthResponse>
 
     companion object {
-        private const val BASE_URL = "https://api.steampowered.com/"
+        const val BASE_URL = "https://api.steampowered.com/"
         const val API_KEY = "C5047CA4CB69A58EAD6BC1B6C8D895C7"
-
 
         fun create() : SteamService {
             val moshi = Moshi.Builder()
@@ -38,8 +38,7 @@ interface SteamService {
 
 data class AuthenticateUserRequest(
     @Json(name = "steamid") val steamId: String,
-    @Json(name = "password") val password: String,
-    @Json(name = "key") val apiKey: String,
+    @Json(name = "key") val apiKey: String
 )
 
 data class SteamAuthResponse(
