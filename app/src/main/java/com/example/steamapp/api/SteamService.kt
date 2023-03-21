@@ -1,5 +1,6 @@
 package com.example.steamapp.api
 
+import com.example.steamapp.data.AppListStorage
 import com.squareup.moshi.Json
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -22,7 +23,7 @@ interface SteamService {
     @GET("ISteamApps/GetAppList/v2/")
     suspend fun getAppList(
         @Query("key") apiKey: String = API_KEY
-    ) : Response<AppList>
+    ) : Response<GetAppListResponse>
 
     /**
      * Returns the information about a set of apps from their app ids.
@@ -69,6 +70,10 @@ data class SteamAuth(
     val ticket: String
 )
 
+data class GetAppListResponse(
+    val applist: AppList
+)
+
 // Container for list of all apps returned from `getAppList()`
 data class AppList(
     val apps: List<App>
@@ -76,7 +81,7 @@ data class AppList(
 
 // Bare minimum data about an app from GetAppList
 data class App(
-    val appid: UInt,
+    val appid: Int,
     val name: String
 )
 

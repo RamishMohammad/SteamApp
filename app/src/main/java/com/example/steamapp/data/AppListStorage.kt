@@ -53,7 +53,7 @@ class AppListStorage private constructor(){
      * @param id Id of the app
      * @return App's name as string, null if not found
      */
-    fun getAppNameById(id: UInt): String? {
+    fun getAppNameById(id: Int): String? {
         return appList.apps.find { it.appid == id }?.name
     }
 
@@ -66,7 +66,7 @@ class AppListStorage private constructor(){
      * @param name Substring to search for
      * @return App id of the searched name or null if not found.
      */
-    fun getAppIdByFuzzyName(name: String): UInt? {
+    fun getAppIdByFuzzyName(name: String): Int? {
         return try {
             this.filterListByName(name).first().appid
         } catch (e: NoSuchElementException) {
@@ -83,7 +83,7 @@ class AppListStorage private constructor(){
      * @param name The exact App name to search for
      * @return App id of the searched name or null if not found.
      */
-    fun getAppIdByExactName(name: String): UInt? {
+    fun getAppIdByExactName(name: String): Int? {
         return appList.apps.find { it.name == name }?.appid
     }
 }
