@@ -8,7 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.room.Room
+import com.example.steamapp.R
 import com.example.steamapp.api.AuthenticateUserRequest
 import com.example.steamapp.api.SteamService
 import com.example.steamapp.data.AppDataBase
@@ -52,6 +55,10 @@ class SignInFragment : Fragment() {
         binding.signInButton.setOnClickListener {
             val username = binding.usernameEditText.text.toString()
             val password = binding.passwordEditText.text.toString()
+
+            // used for testing nav bar
+            findNavController().navigate(R.id.action_SignInFragment_to_ProfileFragment)
+
 
             GlobalScope.launch(Dispatchers.IO) {
                 val user = userDao.getUserByUsernameAndPassword(username, password)

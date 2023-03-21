@@ -8,12 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.steamapp.databinding.FragmentSignInBinding
 import com.example.steamapp.R
-
+import com.example.steamapp.databinding.FragmentCompareBinding
+import com.example.steamapp.databinding.FragmentExploreBinding
 
 
 class ExploreFragment : Fragment() {
 
-    private var _binding: FragmentSignInBinding? = null
+    private var _binding: FragmentExploreBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -24,7 +25,7 @@ class ExploreFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentSignInBinding.inflate(inflater, container, false)
+        _binding = FragmentExploreBinding.inflate(inflater, container, false)
         return binding.root
 
     }
