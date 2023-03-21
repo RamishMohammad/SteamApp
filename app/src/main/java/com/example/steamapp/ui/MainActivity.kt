@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId) {
                 R.id.profile -> replaceFragment(ProfileFragment())
-                R.id.explore -> replaceFragment(ExploreFragment())
+                R.id.search -> replaceFragment(SearchFragment())
                 R.id.compare -> replaceFragment(CompareFragment())
 
                 else -> {

@@ -8,9 +8,9 @@
         android:icon="@drawable/ic_person_foreground"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/explore"
+        android:id="@+id/search"
         android:enabled="true"
-        android:title="Explore"
+        android:title="Search"
         android:icon="@drawable/ic_search_foreground"
         app:showAsAction="ifRoom" />
     <item
