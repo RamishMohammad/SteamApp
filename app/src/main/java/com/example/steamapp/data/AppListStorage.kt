@@ -7,8 +7,35 @@ import com.example.steamapp.api.AppList
  * A singleton class that stores the names and app ids of all apps from the Steam Web API.
  * This is highly inefficient, but it is the only way to search apps on Steam due to its
  * API's design.
+ *
+ * By default, AppListStorage doesn't contain any data, and must be initialized after it is
+ * instantiated. It must first be initialized with its `initialize()` function before use otherwise
+ * it will cause a runtime error.
+ *
+ * As a singleton, whenever access to the app list is needed, the `getInstance()` function should be
+ * called instead of initializing a new object.
+ *
+ * Singleton boilerplate is referenced from here: https://www.baeldung.com/kotlin/singleton-classes
  */
-class AppListStorage(private val appList: AppList) {
+class AppListStorage private constructor(){
+    companion object {
+        @Volatile
+        private var instance: AppListStorage? = null
+        private lateinit var appList: AppList
+
+        fun getInstance() =
+            instance ?: synchronized(this) {
+                instance ?: AppListStorage().also { instance = it }
+            }
+    }
+
+    /**
+     * Initialize the AppListStorage with the values for its appList. This can be called whenever
+     * the appList
+     */
+    fun initialize(newAppList: AppList) {
+        appList = newAppList
+    }
 
     /**
      * Returns all apps where their name contains the substring from the search parameter.
