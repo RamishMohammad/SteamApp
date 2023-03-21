@@ -8,8 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.room.Room
 import com.example.steamapp.api.AuthenticateUserRequest
 import com.example.steamapp.api.SteamService
+import com.example.steamapp.data.AppDataBase
+import com.example.steamapp.data.UserDao
 import com.example.steamapp.databinding.FragmentSignInBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -18,8 +21,13 @@ import kotlinx.coroutines.launch
 
 class SignInFragment : Fragment() {
 
+    private companion object {
+        const val steamid = 76561199487623107
+    }
+
     private var _binding: FragmentSignInBinding? = null
     private lateinit var steamService: SteamService
+    private lateinit var userDao: UserDao
 
     private val binding get() = _binding!!
 
@@ -35,44 +43,29 @@ class SignInFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         steamService = SteamService.create()
+        val db = Room.databaseBuilder(
+            requireContext().applicationContext,
+            AppDataBase::class.java, "my-db"
+        ).build()
+        userDao = db.userDao()
 
         binding.signInButton.setOnClickListener {
-            val steamid = binding.usernameEditText.text?.toString() ?: ""
-            Log.d(TAG, "steamid: $steamid")
-            val errorMessage = "An error occurred. Please try again later."
+            val username = binding.usernameEditText.text.toString()
+            val password = binding.passwordEditText.text.toString()
 
-
-            if (steamid.isNotEmpty()) {
-                GlobalScope.launch(Dispatchers.IO) {
-                    val request = AuthenticateUserRequest(steamid,SteamService.API_KEY)
+            GlobalScope.launch(Dispatchers.IO) {
+                val user = userDao.getUserByUsernameAndPassword(username, password)
+                if (user != null) {
+                    // Valid user
+                    Log.d(TAG, "User login successful")
                     val url = "${SteamService.BASE_URL}ISteamUser/GetPlayerSummaries/v2/?key=${SteamService.API_KEY}&steamids=$steamid"
-
                     Log.d(TAG, "API URL: $url")
-                    val response = steamService.authenticateUser(request)
-                    if (response.isSuccessful) {
-                        val steamAuth = response.body()?.response
-                        if (steamAuth != null && steamAuth.success) {
-                            // User is authenticated
-                            Log.d(TAG, "API call succeeded with status code: ${response.code()}")
-                            Log.d(TAG, "Response data: ${response.body()}")
-
-                        } else {
-                            Log.d(TAG, "FAILEDDD")
-                            // TODO: Show an error message to the user
-                        }
-                    } else {
-                        Log.d(TAG, "API FAILEDDD")
-                        Log.e(TAG, response.errorBody()?.string() ?: "Error body is null")
-
-
-                        // TODO: Show an error message to the user
-                    }
+                    // TODO: Handle the response accordingly
+                } else {
+                    // Invalid user
+                    Log.d(TAG, "Invalid username or password")
+                    // TODO: Handle the response accordingly
                 }
-            } else {
-                activity?.runOnUiThread {
-                    Toast.makeText(requireContext(), "Error: $errorMessage", Toast.LENGTH_SHORT).show()
-                }
-
             }
         }
     }
@@ -82,3 +75,4 @@ class SignInFragment : Fragment() {
         _binding = null
     }
 }
+
