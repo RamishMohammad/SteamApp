@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
 import com.example.steamapp.api.AuthenticateUserRequest
 import com.example.steamapp.api.SteamService
@@ -53,7 +54,7 @@ class SignInFragment : Fragment() {
             val username = binding.usernameEditText.text.toString()
             val password = binding.passwordEditText.text.toString()
 
-            GlobalScope.launch(Dispatchers.IO) {
+            lifecycleScope.launch(Dispatchers.IO) {
                 val user = userDao.getUserByUsernameAndPassword(username, password)
                 if (user != null) {
                     // Valid user

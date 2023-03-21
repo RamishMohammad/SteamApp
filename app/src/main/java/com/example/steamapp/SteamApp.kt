@@ -3,7 +3,7 @@ package com.example.steamapp
 import android.app.Application
 import com.example.steamapp.api.SteamService
 import com.example.steamapp.data.AppListStorage
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 
 /**
  * This class contains logic that should only run once on application startup. We call a coroutine
@@ -16,7 +16,9 @@ class SteamApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        runBlocking {
+
+        @OptIn(DelicateCoroutinesApi::class)
+        GlobalScope.launch(Dispatchers.IO) {
             val appListStorage  = AppListStorage.getInstance()
             service.getAppList().body()?.let { appListStorage.initialize(it.applist) }
         }
