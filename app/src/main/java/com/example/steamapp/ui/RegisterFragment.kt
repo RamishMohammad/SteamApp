@@ -12,6 +12,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.room.Room
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.steamapp.R
 import com.example.steamapp.data.AppDataBase
 import com.example.steamapp.data.User
@@ -28,6 +30,8 @@ class RegisterFragment : Fragment() {
     private lateinit var passwordEditText: EditText
     private lateinit var submitButton: Button
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,21 +45,23 @@ class RegisterFragment : Fragment() {
         val db = Room.databaseBuilder(
             requireContext().applicationContext,
             AppDataBase::class.java, "my-db"
-        ).build()
+        ).fallbackToDestructiveMigration().build()
         val userDao = db.userDao()
         usernameEditText = binding.usernameEdittext
         passwordEditText = binding.passwordEdittext
         submitButton = binding.registerButton
+
         submitButton.setOnClickListener {
             val username = usernameEditText.text.toString()
             val password = passwordEditText.text.toString()
-            val user = User(username, password)
+            val user = User(username = username, password = password)
             lifecycleScope.launch {
                 val id = userDao.insertUser(user)
                 Log.d(TAG, "User inserted with id: $id")
             }
         }
     }
+
 
 
 

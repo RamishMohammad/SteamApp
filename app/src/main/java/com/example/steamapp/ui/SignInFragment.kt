@@ -17,6 +17,9 @@ import com.example.steamapp.data.UserDao
 import com.example.steamapp.databinding.FragmentSignInBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import androidx.appcompat.widget.AppCompatEditText
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 
 
 class SignInFragment : Fragment() {
@@ -46,15 +49,18 @@ class SignInFragment : Fragment() {
         val db = Room.databaseBuilder(
             requireContext().applicationContext,
             AppDataBase::class.java, "my-db"
-        ).build()
+        ).fallbackToDestructiveMigration().build()
         userDao = db.userDao()
 
         binding.signInButton.setOnClickListener {
-            val username = binding.usernameEditText.toString()
-            val password = binding.passwordEditText.toString()
+            val username = binding.outlinedEditText.text.toString()
+            val password = binding.outlinedEditText2.text.toString()
+            Log.d(TAG, "Username: ${username}, Password: ${password}")
 
             lifecycleScope.launch(Dispatchers.IO) {
                 val user = userDao.getUserByUsernameAndPassword(username, password)
+                Log.d(TAG, "User: ${user}")
+                Log.d(TAG, "Username: ${user?.username}, Password: ${user?.password}")
                 if (user != null) {
                     // Valid user
                     Log.d(TAG, "User login successful")
