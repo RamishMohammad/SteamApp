@@ -1,12 +1,11 @@
 package com.example.steamapp.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.provider.ContactsContract.Profile
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.AdapterView
-import android.widget.GridView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -32,6 +31,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 //        replaceFragment(FirstFragment())
@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
         ////////////////////////////////////
+
 
         binding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId) {
@@ -56,6 +57,7 @@ class MainActivity : AppCompatActivity() {
             true
         }
     }
+
 
     private fun replaceFragment(fragment: Fragment) {
         val fragmentManager = supportFragmentManager

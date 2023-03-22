@@ -19,12 +19,4 @@
         android:title="Compare"
         android:icon="@drawable/ic_compare_foreground"
         app:showAsAction="ifRoom" />
-    <!--
-    <item
-        android:id="@+id/settings"
-        android:enabled="true"
-        android:title="Settings"
-        android:icon="@drawable/ic_settings_foreground"
-        app:showAsAction="ifRoom" />
-        -->
 </menu>
