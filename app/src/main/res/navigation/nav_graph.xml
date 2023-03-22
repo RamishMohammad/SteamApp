@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/signInFragment"
         android:name="com.example.steamapp.ui.SignInFragment"
-        android:label="SignIn Fragment"
+        android:label="Sign-In"
         tools:layout="@layout/fragment_sign_in" >
         <action
             android:id="@+id/action_SignInFragment_to_RegisterFragment"
@@ -19,21 +19,15 @@
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.steamapp.ui.RegisterFragment"
-        android:label="Register Fragment"
+        android:label="Register An Account"
         tools:layout="@layout/fragment_register" />
 
     <fragment
         android:id="@+id/resultsFragment"
         android:name="com.example.steamapp.ui.ResultsFragment"
-        android:label="Results Fragment"
+        android:label="Results"
         tools:layout="@layout/fragment_results" />
 
-    <fragment
-        android:id="@+id/gameDetailsFragment"
-        android:name="com.example.steamapp.ui.GameDetailsFragment"
-        android:label="@string/game_details_fragment_label"
-        tools:layout="@layout/fragment_game_details">
-    </fragment>
 
 
 

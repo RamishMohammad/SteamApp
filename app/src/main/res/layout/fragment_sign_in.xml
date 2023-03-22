@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="56dp"
         android:hint="Password"
-        android:inputType="text"
+        android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/signInButton"
         tools:layout_editor_absoluteX="16dp" />
 

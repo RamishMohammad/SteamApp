@@ -8,46 +8,49 @@
     tools:context="com.example.steamapp.ui.RegisterFragment"
     >
 
-    <TextView
-        android:id="@+id/textview_first"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_register_fragment"
-        app:layout_constraintBottom_toTopOf="@id/username_edittext"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <TextView-->
+<!--        android:id="@+id/textview_first"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/hello_register_fragment"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/username_edittext"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <EditText
         android:id="@+id/username_edittext"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
         android:hint="@string/username_hint"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@id/password_edittext"
+        app:layout_constraintBottom_toTopOf="@+id/password_edittext"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_first" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/password_edittext"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="44dp"
         android:hint="@string/password_hint"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@id/register_button"
+        app:layout_constraintBottom_toTopOf="@+id/register_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/username_edittext" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/register_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="388dp"
         android:text="@string/register_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/password_edittext" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
