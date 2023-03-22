@@ -26,6 +26,7 @@
         android:label="SignIn Fragment"
         tools:layout="@layout/fragment_sign_in" />
 
+
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.steamapp.ui.RegisterFragment"
@@ -50,14 +51,21 @@
         android:name="com.example.steamapp.ui.ProfileFragment"
         android:label="Profile Fragment"
         tools:layout="@layout/fragment_profile" />
+
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.example.steamapp.ui.SearchFragment"
         android:label="Search Fragment"
-        tools:layout="@layout/fragment_search"/>
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_SearchFragment_to_Results"
+            app:destination="@id/resultsFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/compareFragment"
         android:name="com.example.steamapp.ui.CompareFragment"
         android:label="CompareFragment"
         tools:layout="@layout/fragment_compare"/>
+
 </navigation>

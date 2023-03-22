@@ -39,9 +39,9 @@ class SearchFragment : Fragment() {
 //
 
 
-//        binding.btnSearch.setOnClickListener {
-//            findNavController().navigate(R.id.action_SearchFragment_to_ResultsFragment)
-//        }
+        binding.buttonSearch.setOnClickListener {
+            findNavController().navigate(R.id.action_SearchFragment_to_Results)
+        }
     }
 
     override fun onDestroyView() {
