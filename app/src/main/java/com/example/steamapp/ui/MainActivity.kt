@@ -1,6 +1,5 @@
 package com.example.steamapp.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.provider.ContactsContract.Profile
 import android.view.Menu
@@ -34,7 +33,6 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        replaceFragment(FirstFragment())
 
         // Top Nav Bar //////////////////////
         setSupportActionBar(binding.toolbar)
@@ -44,9 +42,10 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         ////////////////////////////////////
 
-
+        //        replaceFragment(FirstFragment())
         binding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId) {
+
                 R.id.profile -> replaceFragment(ProfileFragment())
                 R.id.search -> replaceFragment(SearchFragment())
                 R.id.compare -> replaceFragment(CompareFragment())
@@ -57,7 +56,6 @@ class MainActivity : AppCompatActivity() {
             true
         }
     }
-
 
     private fun replaceFragment(fragment: Fragment) {
         val fragmentManager = supportFragmentManager

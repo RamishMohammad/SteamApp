@@ -34,4 +34,11 @@
     <string name="hello_results_fragment">Hello results fragment</string>
     <string name="hello_game_details_fragment">Hello game details fragment</string>
 
+    <string name="no_image">No Image</string>
+
+    <string name="search">Search</string>
+    <string name="search_hint">Search Games</string>
+
+
+
 </resources>
