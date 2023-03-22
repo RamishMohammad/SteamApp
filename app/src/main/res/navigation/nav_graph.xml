@@ -3,28 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/firstFragment">
-
-    <fragment
-        android:id="@+id/firstFragment"
-        android:name="com.example.steamapp.ui.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
-
-        <action
-            android:id="@+id/action_FirstFragment_to_SignInFragment"
-            app:destination="@id/signInFragment" />
-        <action
-            android:id="@+id/action_FirstFragment_to_SignUpFragment"
-            app:destination="@id/registerFragment" />
-
-    </fragment>
+    app:startDestination="@id/signInFragment">
 
     <fragment
         android:id="@+id/signInFragment"
         android:name="com.example.steamapp.ui.SignInFragment"
         android:label="SignIn Fragment"
-        tools:layout="@layout/fragment_sign_in" />
+        tools:layout="@layout/fragment_sign_in" >
+        <action
+            android:id="@+id/action_SignInFragment_to_RegisterFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
 
 
     <fragment

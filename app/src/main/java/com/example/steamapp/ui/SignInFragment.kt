@@ -68,6 +68,10 @@ class SignInFragment : Fragment() {
                 }
             }
         }
+
+        binding.registerButton.setOnClickListener {
+            findNavController().navigate(R.id.action_SignInFragment_to_RegisterFragment)
+        }
     }
 
     override fun onDestroyView() {
