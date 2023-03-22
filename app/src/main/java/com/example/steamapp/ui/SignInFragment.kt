@@ -50,8 +50,8 @@ class SignInFragment : Fragment() {
         userDao = db.userDao()
 
         binding.signInButton.setOnClickListener {
-            val username = binding.usernameEditText.text.toString()
-            val password = binding.passwordEditText.text.toString()
+            val username = binding.usernameEditText.toString()
+            val password = binding.passwordEditText.toString()
 
             lifecycleScope.launch(Dispatchers.IO) {
                 val user = userDao.getUserByUsernameAndPassword(username, password)
@@ -69,7 +69,7 @@ class SignInFragment : Fragment() {
             }
         }
 
-        binding.registerButton.setOnClickListener {
+        binding.textViewClick.setOnClickListener {
             findNavController().navigate(R.id.action_SignInFragment_to_RegisterFragment)
         }
     }
@@ -79,4 +79,3 @@ class SignInFragment : Fragment() {
         _binding = null
     }
 }
-

@@ -98,5 +98,6 @@ dependencies {
     ksp 'androidx.room:room-compiler:2.5.0'
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
-    //test
+
+    implementation 'com.google.android.material:material:1.9.0-beta01'
 }

@@ -105,6 +105,9 @@ class ResultsFragment : Fragment() {
                 R.id.action_item3 -> {
                     Toast.makeText(context, "action item3 clicked", Toast.LENGTH_SHORT).show()
                 }
+                R.id.action_item4 -> {
+                    Toast.makeText(context, "action item3 clicked", Toast.LENGTH_SHORT).show()
+                }
             }
             true
         })
