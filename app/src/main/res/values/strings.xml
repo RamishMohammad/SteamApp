@@ -39,6 +39,10 @@
     <string name="search">Search</string>
     <string name="search_hint">Search Games</string>
 
+    <string name="action_item1">Add to Wishlist</string>
+    <string name="action_item2">Add to Compare</string>
+    <string name="action_item3">Save List</string>
+
 
 
 </resources>

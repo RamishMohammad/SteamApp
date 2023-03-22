@@ -8,16 +8,6 @@
     tools:context="com.example.steamapp.ui.RegisterFragment"
     >
 
-<!--    <TextView-->
-<!--        android:id="@+id/textview_first"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="@string/hello_register_fragment"-->
-<!--        app:layout_constraintBottom_toTopOf="@id/username_edittext"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
     <EditText
         android:id="@+id/username_edittext"
         android:layout_width="0dp"
