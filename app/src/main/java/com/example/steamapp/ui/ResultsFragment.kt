@@ -1,16 +1,16 @@
 package com.example.steamapp.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.ListView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.steamapp.R
+import com.example.steamapp.data.SearchResultsRVAdapter
 import com.example.steamapp.databinding.FragmentResultsBinding
 
 
@@ -65,6 +65,21 @@ class ResultsFragment : Fragment() {
         gameList.add(SearchResultsRVModel("foobar", R.drawable.ic_game_sample_foreground))
         gameList.add(SearchResultsRVModel("foobar", R.drawable.ic_game_sample_foreground))
         gameList.add(SearchResultsRVModel("foobar", R.drawable.ic_game_sample_foreground))
+
+
+
+
+        var adapter = context?.let { SearchResultsRVAdapter(gameList, it) }!!
+        gameRV.adapter = adapter
+        adapter.setOnItemClickListener(object: SearchResultsRVAdapter.onItemClickListener{
+            override fun onItemClick(position: Int) {
+                val newPosition = position + 1
+                Toast.makeText(context, "You Clicked on item no. $newPosition", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+
+
 
         // on below line we are notifying adapter
         // that data has been updated.
