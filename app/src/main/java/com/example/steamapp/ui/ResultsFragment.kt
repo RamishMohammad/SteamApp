@@ -1,17 +1,16 @@
 package com.example.steamapp.ui
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.GridView
+import android.widget.ArrayAdapter
+import android.widget.ListView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.steamapp.R
-import com.example.steamapp.databinding.ActivityMainBinding
 import com.example.steamapp.databinding.FragmentResultsBinding
 
 
@@ -19,10 +18,16 @@ class ResultsFragment : Fragment() {
 
     private var _binding: FragmentResultsBinding? = null
 
+    // on below line we are creating variables
+    // for our swipe to refresh layout,
+    // recycler view, adapter and list.
+    lateinit var gameRV: RecyclerView
+    lateinit var gameRVAdapter: SearchResultsRVAdapter
+    lateinit var gameList: ArrayList<SearchResultsRVModel>
+
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,28 +37,40 @@ class ResultsFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater!!.inflate(R.layout.fragment_results, container, false)
 
-        val gridView = view.findViewById(R.id.gridView) as GridView
 
-        val arrayListImage = ArrayList<Int>()
+        // on below line we are initializing
+        // our views with their ids.
+        gameRV = view.findViewById(R.id.idRVGames)
 
-        arrayListImage.add(R.drawable.ic_launcher_background)
-        arrayListImage.add(R.drawable.ic_launcher_background)
-        arrayListImage.add(R.drawable.ic_launcher_background)
-        arrayListImage.add(R.drawable.ic_launcher_background)
-        arrayListImage.add(R.drawable.ic_launcher_background)
+        // on below line we are initializing our list
+        gameList = ArrayList()
 
-        val name = arrayOf("Cupcake", "Donut", "Eclair", "Froyo", "Gingerbread")
+        // on below line we are creating a variable
+        // for our grid layout manager and specifying
+        // column count as 3
+        val layoutManager = GridLayoutManager(context, 3)
 
-        val myAdapter = context?.let { MyAdapter(it, arrayListImage, name) }
+        gameRV.layoutManager = layoutManager
 
-        gridView.adapter = myAdapter
+        // on below line we are initializing our adapter
+        gameRVAdapter = context?.let { SearchResultsRVAdapter(gameList, it) }!!
 
-        gridView.setOnItemClickListener { adapterView, parent, position, l ->
-            Toast.makeText(context, "Click on : " + name[position], Toast.LENGTH_LONG).show()
-        }
+        // on below line we are setting
+        // adapter to our recycler view.
+        gameRV.adapter = gameRVAdapter
 
-//        _binding = FragmentResultsBinding.inflate(inflater, container, false)
-//        return binding.root
+        // on below line we are adding data to our list
+        gameList.add(SearchResultsRVModel("foobar", R.drawable.ic_game_sample_foreground))
+        gameList.add(SearchResultsRVModel("foobar", R.drawable.ic_game_sample_foreground))
+        gameList.add(SearchResultsRVModel("foobar", R.drawable.ic_game_sample_foreground))
+        gameList.add(SearchResultsRVModel("foobar", R.drawable.ic_game_sample_foreground))
+        gameList.add(SearchResultsRVModel("foobar", R.drawable.ic_game_sample_foreground))
+
+        // on below line we are notifying adapter
+        // that data has been updated.
+        gameRVAdapter.notifyDataSetChanged()
+
+
         return view
     }
 

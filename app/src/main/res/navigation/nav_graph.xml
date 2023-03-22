@@ -39,7 +39,12 @@
         android:label="Results Fragment"
         tools:layout="@layout/fragment_results" />
 
-
+    <fragment
+        android:id="@+id/gameDetailsFragment"
+        android:name="com.example.steamapp.ui.GameDetailsFragment"
+        android:label="@string/game_details_fragment_label"
+        tools:layout="@layout/fragment_game_details">
+    </fragment>
 
 
 

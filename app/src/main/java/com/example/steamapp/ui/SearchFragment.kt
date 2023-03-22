@@ -59,6 +59,7 @@ class SearchFragment : Fragment() {
         binding.btnSearch.setOnClickListener {
             val query = binding.idSV.query.toString()
             updateFilteredList(query)
+            findNavController().navigate(R.id.action_SearchFragment_to_Results)
         }
     }
 
