@@ -3,76 +3,69 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/firstFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
+        android:id="@+id/firstFragment"
         android:name="com.example.steamapp.ui.FirstFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
 
         <action
             android:id="@+id/action_FirstFragment_to_SignInFragment"
-            app:destination="@id/SignInFragment" />
+            app:destination="@id/signInFragment" />
         <action
             android:id="@+id/action_FirstFragment_to_SignUpFragment"
-            app:destination="@id/RegisterFragment" />
+            app:destination="@id/registerFragment" />
+
     </fragment>
 
     <fragment
-        android:id="@+id/SignInFragment"
+        android:id="@+id/signInFragment"
         android:name="com.example.steamapp.ui.SignInFragment"
-        android:label="@string/sign_in_fragment_label"
-        tools:layout="@layout/fragment_sign_in">
+        android:label="SignIn Fragment"
+        tools:layout="@layout/fragment_sign_in" />
 
-        <action
-            android:id="@+id/action_SignInFragment_to_ProfileFragment"
-            app:destination="@id/ProfileFragment" />
-    </fragment>
 
     <fragment
-        android:id="@+id/RegisterFragment"
+        android:id="@+id/registerFragment"
         android:name="com.example.steamapp.ui.RegisterFragment"
-        android:label="@string/register_fragment_label"
-        tools:layout="@layout/fragment_register">
-
-        <action
-            android:id="@+id/action_RegisterFragment_to_ProfileFragment"
-            app:destination="@id/ProfileFragment" />
-    </fragment>
+        android:label="Register Fragment"
+        tools:layout="@layout/fragment_register" />
 
     <fragment
-        android:id="@+id/ProfileFragment"
-        android:name="com.example.steamapp.ui.ProfileFragment"
-        android:label="@string/profile_fragment_label"
-        tools:layout="@layout/fragment_profile">
-    </fragment>
-
-    <fragment
-        android:id="@+id/CompareFragment"
-        android:name="com.example.steamapp.ui.CompareFragment"
-        android:label="@string/compare_fragment_label"
-        tools:layout="@layout/fragment_compare">
-    </fragment>
-
-    <fragment
-        android:id="@+id/SearchFragment"
-        android:name="com.example.steamapp.ui.SearchFragment"
-        android:label="@string/search_fragment_label"
-        tools:layout="@layout/fragment_search">
-    </fragment>
-
-    <fragment
-        android:id="@+id/ResultsFragment"
+        android:id="@+id/resultsFragment"
         android:name="com.example.steamapp.ui.ResultsFragment"
-        android:label="@string/results_fragment_label"
-        tools:layout="@layout/fragment_results">
+        android:label="Results Fragment"
+        tools:layout="@layout/fragment_results" />
+
+
+
+
+
+
+
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.steamapp.ui.ProfileFragment"
+        android:label="Profile Fragment"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.steamapp.ui.SearchFragment"
+        android:label="Search Fragment"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_SearchFragment_to_Results"
+            app:destination="@id/resultsFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/GameDetailsFragment"
-        android:name="com.example.steamapp.ui.GameDetailsFragment"
-        android:label="@string/game_details_fragment_label"
-        tools:layout="@layout/fragment_game_details">
-    </fragment>
+        android:id="@+id/compareFragment"
+        android:name="com.example.steamapp.ui.CompareFragment"
+        android:label="CompareFragment"
+        tools:layout="@layout/fragment_compare"/>
+
 </navigation>

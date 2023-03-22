@@ -53,9 +53,6 @@ class SignInFragment : Fragment() {
             val username = binding.usernameEditText.text.toString()
             val password = binding.passwordEditText.text.toString()
 
-            // used for testing nav bar
-            findNavController().navigate(R.id.action_SignInFragment_to_ProfileFragment)
-
             lifecycleScope.launch(Dispatchers.IO) {
                 val user = userDao.getUserByUsernameAndPassword(username, password)
                 if (user != null) {

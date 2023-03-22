@@ -1,19 +1,14 @@
 package com.example.steamapp.ui
 
+import android.app.PendingIntent.getActivity
 import android.os.Bundle
-import android.provider.ContactsContract.Profile
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
-import androidx.navigation.ui.NavigationUI.setupWithNavController
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
@@ -37,32 +32,37 @@ class MainActivity : AppCompatActivity() {
         // Top Nav Bar //////////////////////
         setSupportActionBar(binding.toolbar)
 
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
+        val navController = this.findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
         ////////////////////////////////////
 
         //        replaceFragment(FirstFragment())
-        binding.bottomNavigationView.setOnItemSelectedListener {
-            when(it.itemId) {
-
-                R.id.profile -> replaceFragment(ProfileFragment())
-                R.id.search -> replaceFragment(SearchFragment())
-                R.id.compare -> replaceFragment(CompareFragment())
-
-                else -> {
-                }
-            }
-            true
-        }
+//        binding.bottomNavigationView.setOnItemSelectedListener {
+//
+//            when(it.itemId) {
+//
+//                R.id.profile -> replaceFragment(ProfileFragment())
+//                R.id.search -> replaceFragment(SearchFragment())
+//                R.id.compare -> replaceFragment(CompareFragment())
+//
+//                else -> {
+//                }
+//            }
+//            true
+//        }
+        // Find reference to bottom navigation view
+        val navView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
+        // Hook your navigation controller to bottom navigation view
+        navView.setupWithNavController(navController)
     }
 
-    private fun replaceFragment(fragment: Fragment) {
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.frame_layout, fragment)
-        fragmentTransaction.commit()
-    }
+//    private fun replaceFragment(fragment: Fragment) {
+//        val fragmentManager = supportFragmentManager
+//        val fragmentTransaction = fragmentManager.beginTransaction()
+//        fragmentTransaction.replace(R.id.frame_layout, fragment)
+//        fragmentTransaction.commit()
+//    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -86,3 +86,4 @@ class MainActivity : AppCompatActivity() {
                 || super.onSupportNavigateUp()
     }
 }
+
