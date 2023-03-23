@@ -47,13 +47,13 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.steamapp.ui.ProfileFragment"
-        android:label="Profile Fragment"
+        android:label="Profile"
         tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.example.steamapp.ui.SearchFragment"
-        android:label="Search Fragment"
+        android:label="Search"
         tools:layout="@layout/fragment_search" >
         <action
             android:id="@+id/action_SearchFragment_to_Results"
