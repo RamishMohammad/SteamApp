@@ -21,7 +21,8 @@ interface SteamWebService {
 
     @GET("ISteamApps/GetAppList/v2/")
     suspend fun getAppList(
-        @Query("key") apiKey: String = API_KEY
+        @Query("key") apiKey: String = API_KEY,
+        @Query("type_filter") filters : String = "game,dlc"
     ) : Response<GetAppListResponse>
 
     companion object {
@@ -51,8 +52,8 @@ interface SteamStoreService {
      */
     @GET("appdetails")
     suspend fun getAppDetails(
-        @Query("appids") appids: List<UInt>
-    ) : Response<List<AppDetails>>
+        @Query("appids") appids: Int
+    ) : Response<AppDetails>
 
     companion object {
         const val BASE_URL = "https://store.steampowered.com/api/"
@@ -109,4 +110,6 @@ data class AppDetails(
 data class AppData(
     val name: String,
     val detailed_description: String,
+    val short_description: String,
+    val header_image: String,
 )

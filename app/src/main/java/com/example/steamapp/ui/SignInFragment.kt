@@ -69,8 +69,8 @@ class SignInFragment : Fragment() {
         userDao = db.userDao()
 
         binding.signInButton.setOnClickListener {
-            var username = binding.outlinedEditText.text.toString()
-            var password = binding.outlinedEditText2.text.toString()
+            val username = binding.outlinedEditText.text.toString()
+            val password = binding.outlinedEditText2.text.toString()
             Log.d(TAG, "Username: ${username}, Password: ${password}")
 
             lifecycleScope.launch(Dispatchers.Main) {
