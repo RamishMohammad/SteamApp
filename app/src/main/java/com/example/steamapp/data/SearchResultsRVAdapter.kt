@@ -2,19 +2,19 @@ package com.example.steamapp.data
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.steamapp.R
 import com.example.steamapp.ui.SearchResultsRVModel
 
-// on below line we are creating
-// a course rv adapter class.
+
+
 class SearchResultsRVAdapter(
-    // on below line we are passing variables
-    // as course list and context
     private val gameList: ArrayList<SearchResultsRVModel>,
     private val context: Context
 ) : RecyclerView.Adapter<SearchResultsRVAdapter.GameViewHolder>() {
@@ -30,9 +30,6 @@ class SearchResultsRVAdapter(
     fun setOnItemClickListener(listener: onItemClickListener){
         mListener = listener
     }
-
-
-
 
 
     override fun onCreateViewHolder(

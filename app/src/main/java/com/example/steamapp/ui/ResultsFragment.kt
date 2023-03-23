@@ -1,7 +1,10 @@
 package com.example.steamapp.ui
 
+import android.content.ContentValues
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.PopupMenu
 import android.widget.Toast
@@ -69,8 +72,11 @@ class ResultsFragment : Fragment() {
 //        gameList.add(SearchResultsRVModel("foobar", R.drawable.ic_game_sample_foreground))
 //        gameList.add(SearchResultsRVModel("foobar", R.drawable.ic_game_sample_foreground))
 
+        val gameArray = ArrayList<String>()
+
         for(game in args.gameList) {
             gameList.add(SearchResultsRVModel(game, R.drawable.ic_game_sample_foreground))
+            gameArray.add(game)
         }
 
 
@@ -78,9 +84,11 @@ class ResultsFragment : Fragment() {
         gameRV.adapter = adapter
         adapter.setOnItemClickListener(object: SearchResultsRVAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {
-                val newPosition = position + 1
-                Toast.makeText(context, "You Clicked on item no. $newPosition", Toast.LENGTH_SHORT).show()
-                showPopupMenu()
+//                val newPosition = position + 1
+//                val gameName = gameList[position]
+//
+//                Toast.makeText(context, "gameName: $gameName", Toast.LENGTH_LONG).show()
+                showPopupMenu(position)
             }
         })
 
@@ -91,18 +99,25 @@ class ResultsFragment : Fragment() {
         return view
     }
 
-    private fun showPopupMenu() {
-        val popupMenu = PopupMenu(context, view?.findViewById(R.id.idIVGame))
-
+    private fun showPopupMenu(position: Int) {
+        val popupMenu = PopupMenu(context, view?.findViewById(R.id.idTVGame))
         popupMenu.inflate(R.menu.popup_menu)
         popupMenu.show()
 
         popupMenu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item: MenuItem ->
+            val gameArray = ArrayList<String>()
 
+            for(game in args.gameList) {
+                gameArray.add(game)
+            }
             when (item.itemId) {
 
                 R.id.action_item1 -> {
-                    Toast.makeText(context, "action item1 clicked", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(Intent.ACTION_VIEW)
+                    intent.data = Uri.parse("https://www.google.com/search?q=" + gameArray[position] + " game trailer video gameplay")
+//                    intent.setPackage("com.google.android.youtube")
+
+                    startActivity(intent)
                 }
                 R.id.action_item2 -> {
                     Toast.makeText(context, "action item2 clicked", Toast.LENGTH_SHORT).show()
