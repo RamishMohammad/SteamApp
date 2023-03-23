@@ -71,17 +71,25 @@ class RegisterFragment : Fragment() {
                     val snack = Snackbar.make(it,"All Fields Required",Snackbar.LENGTH_LONG)
                     snack.show()
                 } else {
-                    val id = userDao.insertUser(user)
-                    // Android emulator doesn't support Google Password Manager
-                    // So we can't actually call any code from the jetpack credentials library
-                    // The code was done, so I'm going to leave it commented out just so I can say
-                    // it could have worked
-//                    createPasswordCredential(username, password)
-
-                    findNavController().navigate(R.id.action_RegisterFragment_to_SignInFragment)
-                    val snack = Snackbar.make(it,"Account Creation Success", Snackbar.LENGTH_LONG)
-                    snack.show()
-                    Log.d(TAG, "User inserted with id: $id")
+                    // Check if username already exists
+                    val existingUser = userDao.getUsername(username)
+                    Log.d(TAG, "User : $existingUser")
+                    if (existingUser >= 1) {
+                        val snacks = Snackbar.make(it,"Username already exists. Please select a different username.", Snackbar.LENGTH_LONG)
+                        snacks.show()
+                        Log.d(TAG, "User already exists")
+                    } else {
+                        val id = userDao.insertUser(user)
+                        // Android emulator doesn't support Google Password Manager
+                        // So we can't actually call any code from the jetpack credentials library
+                        // The code was done, so I'm going to leave it commented out just so I can say
+                        // it could have worked
+                        // createPasswordCredential(username, password)
+                        val snack = Snackbar.make(it,"Account Creation Success", Snackbar.LENGTH_LONG)
+                        snack.show()
+                        findNavController().navigate(R.id.action_RegisterFragment_to_SignInFragment)
+                        Log.d(TAG, "User inserted with id: $id")
+                    }
                 }
             }
             it.hideKeyboard()
