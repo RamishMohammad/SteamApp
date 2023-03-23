@@ -1,11 +1,13 @@
 package com.example.steamapp.ui
 
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -20,6 +22,7 @@ import kotlinx.coroutines.launch
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.google.android.material.snackbar.Snackbar
 
 
 class SignInFragment : Fragment() {
@@ -71,13 +74,23 @@ class SignInFragment : Fragment() {
                     // Invalid user
                     Log.d(TAG, "Invalid username or password")
                     // TODO: Handle the response accordingly
+                    val snack = Snackbar.make(it,"Invalid User",Snackbar.LENGTH_LONG)
+                    snack.show()
                 }
             }
+            it.hideKeyboard()
         }
 
+        // Clickable Text to RegisterFragment
         binding.textViewClick.setOnClickListener {
             findNavController().navigate(R.id.action_SignInFragment_to_RegisterFragment)
         }
+
+    }
+
+    private fun View.hideKeyboard() {
+        val inputManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputManager.hideSoftInputFromWindow(windowToken, 0)
     }
 
     override fun onDestroyView() {

@@ -59,14 +59,21 @@ class SearchFragment : Fragment() {
         binding.btnSearch.setOnClickListener {
             val query = binding.idSV.query.toString()
             updateFilteredList(query)
+
+
             findNavController().navigate(R.id.action_SearchFragment_to_Results)
         }
     }
+
 
     private fun updateFilteredList(query: String) {
         val filteredList = appListStorage.filterListByName(query)
         gameListAdapter = GameListAdapter(filteredList)
         binding.gameList.adapter = gameListAdapter
+        val myList = java.util.ArrayList(filteredList)
+        for (i in myList) {
+            Log.d("myList", "item in adapterList: $i")
+        }
         Log.d("SearchFragment", "Filtered list size: ${filteredList.size}")
     }
 

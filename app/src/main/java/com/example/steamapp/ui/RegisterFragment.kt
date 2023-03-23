@@ -1,11 +1,13 @@
 package com.example.steamapp.ui
 
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
@@ -15,9 +17,11 @@ import androidx.room.Room
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.steamapp.R
+import com.example.steamapp.api.SteamWebService
 import com.example.steamapp.data.AppDataBase
 import com.example.steamapp.data.User
 import com.example.steamapp.databinding.FragmentRegisterBinding
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 
 
@@ -55,14 +59,29 @@ class RegisterFragment : Fragment() {
             val username = usernameEditText.text.toString()
             val password = passwordEditText.text.toString()
             val user = User(username = username, password = password)
+
             lifecycleScope.launch {
-                val id = userDao.insertUser(user)
-                Log.d(TAG, "User inserted with id: $id")
+                if (username.isBlank() || password.isBlank()) {
+                    Log.d(TAG, "Invalid username or password")
+                    val snack = Snackbar.make(it,"All Fields Required",Snackbar.LENGTH_LONG)
+                    snack.show()
+                } else {
+                    val id = userDao.insertUser(user)
+                    val snack = Snackbar.make(it,"Account Creation Success", Snackbar.LENGTH_LONG)
+                    snack.show()
+                    findNavController().navigate(R.id.action_RegisterFragment_to_SignInFragment)
+                    Log.d(TAG, "User inserted with id: $id")
+                }
             }
+            it.hideKeyboard()
+
         }
     }
 
-
+    private fun View.hideKeyboard() {
+        val inputManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputManager.hideSoftInputFromWindow(windowToken, 0)
+    }
 
 
     override fun onDestroyView() {

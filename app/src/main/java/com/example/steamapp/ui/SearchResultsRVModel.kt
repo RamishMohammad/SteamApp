@@ -7,3 +7,4 @@ data class SearchResultsRVModel(
     var gameName: String,
     var gameImg: Int
 )
+

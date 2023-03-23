@@ -19,7 +19,11 @@
         android:id="@+id/registerFragment"
         android:name="com.example.steamapp.ui.RegisterFragment"
         android:label="Register An Account"
-        tools:layout="@layout/fragment_register" />
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_RegisterFragment_to_SignInFragment"
+            app:destination="@id/signInFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/resultsFragment"
