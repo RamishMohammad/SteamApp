@@ -1,14 +1,11 @@
 package com.example.steamapp.ui
 
-import android.content.ContentValues
 import android.content.Intent
-import android.net.Uri
+import android.content.Intent.getIntent
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.PopupMenu
 import android.widget.Toast
-import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
@@ -34,6 +31,7 @@ class ResultsFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -65,13 +63,6 @@ class ResultsFragment : Fragment() {
         // adapter to our recycler view.
         gameRV.adapter = gameRVAdapter
 
-        // on below line we are adding data to our list
-//        gameList.add(SearchResultsRVModel("foobar", R.drawable.ic_game_sample_foreground))
-//        gameList.add(SearchResultsRVModel("foobar", R.drawable.ic_game_sample_foreground))
-//        gameList.add(SearchResultsRVModel("foobar", R.drawable.ic_game_sample_foreground))
-//        gameList.add(SearchResultsRVModel("foobar", R.drawable.ic_game_sample_foreground))
-//        gameList.add(SearchResultsRVModel("foobar", R.drawable.ic_game_sample_foreground))
-
         val gameArray = ArrayList<String>()
 
         for(game in args.gameList) {
@@ -84,10 +75,6 @@ class ResultsFragment : Fragment() {
         gameRV.adapter = adapter
         adapter.setOnItemClickListener(object: SearchResultsRVAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {
-//                val newPosition = position + 1
-//                val gameName = gameList[position]
-//
-//                Toast.makeText(context, "gameName: $gameName", Toast.LENGTH_LONG).show()
                 showPopupMenu(position)
             }
         })
@@ -110,14 +97,16 @@ class ResultsFragment : Fragment() {
             for(game in args.gameList) {
                 gameArray.add(game)
             }
+
             when (item.itemId) {
 
                 R.id.action_item1 -> {
-                    val intent = Intent(Intent.ACTION_VIEW)
-                    intent.data = Uri.parse("https://www.google.com/search?q=" + gameArray[position] + " game trailer video gameplay")
-//                    intent.setPackage("com.google.android.youtube")
-
+                    val intent = Intent(Intent.ACTION_SEARCH)
+                    intent.setPackage("com.google.android.youtube")
+                    intent.putExtra("query", "${gameArray[position]}" + " game trailer")
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(intent)
+
                 }
                 R.id.action_item2 -> {
                     Toast.makeText(context, "action item2 clicked", Toast.LENGTH_SHORT).show()
@@ -131,18 +120,21 @@ class ResultsFragment : Fragment() {
             }
             true
         })
+
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//
 //        binding.buttonFirst.setOnClickListener {
 //            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
 //        }
-    }
+//    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 }
+
