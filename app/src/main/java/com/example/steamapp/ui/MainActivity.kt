@@ -4,6 +4,7 @@ import android.app.PendingIntent.getActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -41,6 +42,29 @@ class MainActivity : AppCompatActivity() {
         val navView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
         // Hook your navigation controller to bottom navigation view
         navView.setupWithNavController(navController)
+
+        // Bottom Nav show/hide
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.profileFragment -> showBottomNav()
+                R.id.searchFragment -> showBottomNav()
+                R.id.resultsFragment -> showBottomNav()
+                R.id.compareFragment -> showBottomNav()
+
+                else -> hideBottomNav()
+            }
+        }
+
+    }
+
+    private fun showBottomNav() {
+        binding.bottomNavigationView.visibility = View.VISIBLE
+
+    }
+
+    private fun hideBottomNav() {
+        binding.bottomNavigationView.visibility = View.GONE
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

@@ -20,8 +20,11 @@ import com.example.steamapp.databinding.FragmentSignInBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import androidx.appcompat.widget.AppCompatEditText
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 
 
@@ -37,10 +40,13 @@ class SignInFragment : Fragment() {
 
     private val binding get() = _binding!!
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         _binding = FragmentSignInBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -89,7 +95,10 @@ class SignInFragment : Fragment() {
             findNavController().navigate(R.id.action_SignInFragment_to_RegisterFragment)
         }
 
+
+
     }
+
 
     private fun View.hideKeyboard() {
         val inputManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -100,4 +109,6 @@ class SignInFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+
 }
