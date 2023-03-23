@@ -10,5 +10,7 @@
     <color name="textColorHighlight">#4DD81B60</color>
     <color name="purple">#673AB7</color>
     <color name="purpleAlpha15">#26673AB7</color>
+    <color name="blue">#5b39c6</color>
+
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#673AB7</color>
 </resources>

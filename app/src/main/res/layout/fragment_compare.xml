@@ -73,4 +73,13 @@
         </LinearLayout>
     </ScrollView>
 
+    <!--on below line we are creating a recycler view-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/idRVWishlist"
+        android:layout_width="match_parent"
+        android:layout_height="365dp"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

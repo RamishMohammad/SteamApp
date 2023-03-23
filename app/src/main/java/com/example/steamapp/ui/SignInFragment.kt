@@ -73,6 +73,7 @@ class SignInFragment : Fragment() {
                 if (user != null) {
                     // Valid user
                     val snack = Snackbar.make(it,"Successful Login",Snackbar.LENGTH_LONG)
+                    snack.setAnchorView(R.id.bottomNavigationView)
                     snack.show()
                     val url = "${SteamWebService.BASE_URL}ISteamUser/GetPlayerSummaries/v2/?key=${SteamWebService.API_KEY}&steamids=$steamid"
                     findNavController().navigate(R.id.action_SignInFragment_to_ProfileFragment)
@@ -83,6 +84,7 @@ class SignInFragment : Fragment() {
                 } else {
                     // Invalid user
                     val snack = Snackbar.make(it,"Invalid User",Snackbar.LENGTH_LONG)
+                    snack.setAnchorView(R.id.bottomNavigationView)
                     snack.show()
                     Log.d(TAG, "Invalid username or password")
                 }

@@ -10,6 +10,6 @@
         android:icon="@drawable/ic_search_foreground" />
     <item
         android:id="@+id/compareFragment"
-        android:title="Compare"
+        android:title="Wishlist"
         android:icon="@drawable/ic_compare_foreground" />
 </menu>

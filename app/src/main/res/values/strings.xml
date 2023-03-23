@@ -3,16 +3,15 @@
     <string name="action_settings">Settings</string>
 
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+
     <string name="sign_in_fragment_label">Sign In</string>
-    <string name="register_fragment_label">Register Fragment</string>
-    <string name="profile_fragment_label">Profile Fragment</string>
-    <string name="explore_fragment_label">Explore Fragment</string>
-    <string name="compare_fragment_label">Compare Fragment</string>
-    <string name="search_fragment_label">Search Fragment</string>
-    <string name="results_fragment_label">Results Fragment</string>
-    <string name="game_details_fragment_label">Game Details Fragment</string>
+    <string name="register_fragment_label">Register</string>
+    <string name="profile_fragment_label">Profile</string>
+    <string name="explore_fragment_label">Explore</string>
+    <string name="compare_fragment_label">Compare</string>
+    <string name="search_fragment_label">Search</string>
+    <string name="results_fragment_label">Results</string>
+    <string name="game_details_fragment_label">Game Details</string>
 
 
     <string name="next">Next</string>

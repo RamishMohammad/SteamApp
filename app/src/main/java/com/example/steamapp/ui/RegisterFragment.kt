@@ -64,10 +64,12 @@ class RegisterFragment : Fragment() {
                 if (username.isBlank() || password.isBlank()) {
                     Log.d(TAG, "Invalid username or password")
                     val snack = Snackbar.make(it,"All Fields Required",Snackbar.LENGTH_LONG)
+                    snack.setAnchorView(R.id.bottomNavigationView)
                     snack.show()
                 } else {
                     val id = userDao.insertUser(user)
                     val snack = Snackbar.make(it,"Account Creation Success", Snackbar.LENGTH_LONG)
+                    snack.setAnchorView(R.id.bottomNavigationView)
                     snack.show()
                     findNavController().navigate(R.id.action_RegisterFragment_to_SignInFragment)
                     Log.d(TAG, "User inserted with id: $id")
