@@ -80,7 +80,7 @@ class RegisterFragment : Fragment() {
 
                     findNavController().navigate(R.id.action_RegisterFragment_to_SignInFragment)
                     val snack = Snackbar.make(it,"Account Creation Success", Snackbar.LENGTH_LONG)
-                    snack.show()4
+                    snack.show()
                     Log.d(TAG, "User inserted with id: $id")
                 }
             }
