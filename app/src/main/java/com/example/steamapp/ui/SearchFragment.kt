@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.steamapp.R
+import com.example.steamapp.api.AppList
 import com.example.steamapp.data.AppListStorage
 import com.example.steamapp.data.GameListAdapter
 import com.example.steamapp.databinding.FragmentSearchBinding
@@ -20,6 +21,7 @@ import com.example.steamapp.databinding.FragmentSearchBinding
 class SearchFragment : Fragment() {
 
     private var _binding: FragmentSearchBinding? = null
+    private lateinit var filteredAppList: AppList
     private lateinit var gameListAdapter: GameListAdapter
     private val appListStorage = AppListStorage.getInstance()
 
@@ -39,6 +41,7 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         gameListAdapter = GameListAdapter(emptyList())
+        filteredAppList = AppList(emptyList())
         binding.gameList.adapter = gameListAdapter
         binding.gameList.layoutManager = LinearLayoutManager(requireContext())
 
@@ -63,7 +66,10 @@ class SearchFragment : Fragment() {
             updateFilteredList(query)
             it.hideKeyboard()
 
-            findNavController().navigate(R.id.action_SearchFragment_to_Results)
+
+            val gameList = Array<String>(filteredAppList.apps.size) {i -> filteredAppList.apps[i].name}
+            val directions = SearchFragmentDirections.actionSearchFragmentToResults(gameList)
+            findNavController().navigate(directions)
         }
     }
 
@@ -76,6 +82,7 @@ class SearchFragment : Fragment() {
     private fun updateFilteredList(query: String) {
         val filteredList = appListStorage.filterListByName(query)
         gameListAdapter = GameListAdapter(filteredList)
+        filteredAppList = AppList(filteredList)
         binding.gameList.adapter = gameListAdapter
         Log.d("SearchFragment", "Filtered list size: ${filteredList.size}")
     }

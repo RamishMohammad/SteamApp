@@ -32,7 +32,11 @@
         android:id="@+id/resultsFragment"
         android:name="com.example.steamapp.ui.ResultsFragment"
         android:label="Results"
-        tools:layout="@layout/fragment_results" />
+        tools:layout="@layout/fragment_results" >
+        <argument
+            android:name="gameList"
+            app:argType="string[]" />
+    </fragment>
 
 
 

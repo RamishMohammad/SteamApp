@@ -7,6 +7,7 @@ import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.core.view.get
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.steamapp.R
@@ -17,6 +18,8 @@ import com.example.steamapp.databinding.FragmentResultsBinding
 class ResultsFragment : Fragment() {
 
     private var _binding: FragmentResultsBinding? = null
+
+    private val args: ResultsFragmentArgs by navArgs()
 
     // on below line we are creating variables
     // for our swipe to refresh layout,
@@ -60,13 +63,15 @@ class ResultsFragment : Fragment() {
         gameRV.adapter = gameRVAdapter
 
         // on below line we are adding data to our list
-        gameList.add(SearchResultsRVModel("foobar", R.drawable.ic_game_sample_foreground))
-        gameList.add(SearchResultsRVModel("foobar", R.drawable.ic_game_sample_foreground))
-        gameList.add(SearchResultsRVModel("foobar", R.drawable.ic_game_sample_foreground))
-        gameList.add(SearchResultsRVModel("foobar", R.drawable.ic_game_sample_foreground))
-        gameList.add(SearchResultsRVModel("foobar", R.drawable.ic_game_sample_foreground))
+//        gameList.add(SearchResultsRVModel("foobar", R.drawable.ic_game_sample_foreground))
+//        gameList.add(SearchResultsRVModel("foobar", R.drawable.ic_game_sample_foreground))
+//        gameList.add(SearchResultsRVModel("foobar", R.drawable.ic_game_sample_foreground))
+//        gameList.add(SearchResultsRVModel("foobar", R.drawable.ic_game_sample_foreground))
+//        gameList.add(SearchResultsRVModel("foobar", R.drawable.ic_game_sample_foreground))
 
-
+        for(game in args.gameList) {
+            gameList.add(SearchResultsRVModel(game, R.drawable.ic_game_sample_foreground))
+        }
 
 
         var adapter = context?.let { SearchResultsRVAdapter(gameList, it) }!!
