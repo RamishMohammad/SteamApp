@@ -11,6 +11,9 @@
         android:label="Sign-In"
         tools:layout="@layout/fragment_sign_in" >
         <action
+            android:id="@+id/action_SignInFragment_to_ProfileFragment"
+            app:destination="@id/profileFragment" />
+        <action
             android:id="@+id/action_SignInFragment_to_RegisterFragment"
             app:destination="@id/registerFragment" />
     </fragment>

@@ -60,7 +60,7 @@ class SignInFragment : Fragment() {
             val password = binding.outlinedEditText2.text.toString()
             Log.d(TAG, "Username: ${username}, Password: ${password}")
 
-            lifecycleScope.launch(Dispatchers.IO) {
+            lifecycleScope.launch(Dispatchers.Main) {
                 val user = userDao.getUserByUsernameAndPassword(username, password)
                 Log.d(TAG, "User: ${user}")
                 Log.d(TAG, "Username: ${user?.username}, Password: ${user?.password}")
@@ -69,6 +69,8 @@ class SignInFragment : Fragment() {
                     val snack = Snackbar.make(it,"Successful Login",Snackbar.LENGTH_LONG)
                     snack.show()
                     val url = "${SteamWebService.BASE_URL}ISteamUser/GetPlayerSummaries/v2/?key=${SteamWebService.API_KEY}&steamids=$steamid"
+                    findNavController().navigate(R.id.action_SignInFragment_to_ProfileFragment)
+
                     Log.d(TAG, "User login successful")
                     Log.d(TAG, "API URL: $url")
 
@@ -82,7 +84,7 @@ class SignInFragment : Fragment() {
             it.hideKeyboard()
         }
 
-        // Clickable Text to RegisterFragment
+        // Clickable Text to RegisterFragment (Create Account)
         binding.textViewClick.setOnClickListener {
             findNavController().navigate(R.id.action_SignInFragment_to_RegisterFragment)
         }
