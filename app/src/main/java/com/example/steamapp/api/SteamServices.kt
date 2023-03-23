@@ -112,4 +112,24 @@ data class AppData(
     val detailed_description: String,
     val short_description: String,
     val header_image: String,
+    val platforms: Platforms,
+
+)
+
+data class Platforms(
+    val windows: Boolean,
+    val mac: Boolean,
+    val linux: Boolean,
+    val price_overview: Pricing,
+    val metacritic: MetacriticInfo
+)
+
+data class Pricing(
+    val currency: String,
+    val final_formatted: String,
+)
+
+data class MetacriticInfo(
+    val score: Int,
+    val url: String
 )
