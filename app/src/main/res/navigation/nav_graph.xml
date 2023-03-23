@@ -57,7 +57,7 @@
     <fragment
         android:id="@+id/compareFragment"
         android:name="com.example.steamapp.ui.CompareFragment"
-        android:label="Wishlist"
+        android:label="Compare"
         tools:layout="@layout/fragment_compare"/>
 
 </navigation>
