@@ -52,7 +52,9 @@ interface SteamStoreService {
      */
     @GET("appdetails")
     suspend fun getAppDetails(
-        @Query("appids") appids: Int
+        @Query("appids") appids: Int,
+        @Query("cc") currency: String = "us",
+        @Query("l") language: String = "english",
     ) : Response<AppDetails>
 
     companion object {
