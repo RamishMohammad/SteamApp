@@ -37,32 +37,11 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         ////////////////////////////////////
 
-        //        replaceFragment(FirstFragment())
-//        binding.bottomNavigationView.setOnItemSelectedListener {
-//
-//            when(it.itemId) {
-//
-//                R.id.profile -> replaceFragment(ProfileFragment())
-//                R.id.search -> replaceFragment(SearchFragment())
-//                R.id.compare -> replaceFragment(CompareFragment())
-//
-//                else -> {
-//                }
-//            }
-//            true
-//        }
         // Find reference to bottom navigation view
         val navView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
         // Hook your navigation controller to bottom navigation view
         navView.setupWithNavController(navController)
     }
-
-//    private fun replaceFragment(fragment: Fragment) {
-//        val fragmentManager = supportFragmentManager
-//        val fragmentTransaction = fragmentManager.beginTransaction()
-//        fragmentTransaction.replace(R.id.frame_layout, fragment)
-//        fragmentTransaction.commit()
-//    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.

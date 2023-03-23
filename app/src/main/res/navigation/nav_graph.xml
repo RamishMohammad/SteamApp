@@ -31,12 +31,6 @@
         android:label="Results"
         tools:layout="@layout/fragment_results" />
 
-<!--    <fragment-->
-<!--        android:id="@+id/testFragment"-->
-<!--        android:name="com.example.steamapp.ui.TestFragment"-->
-<!--        android:label="TestFragment"-->
-<!--        tools:layout="@layout/fragment_test" />-->
-
 
 
 

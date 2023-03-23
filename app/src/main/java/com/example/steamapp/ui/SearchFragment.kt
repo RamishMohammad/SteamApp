@@ -1,10 +1,12 @@
 package com.example.steamapp.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -59,10 +61,15 @@ class SearchFragment : Fragment() {
         binding.btnSearch.setOnClickListener {
             val query = binding.idSV.query.toString()
             updateFilteredList(query)
-
+            it.hideKeyboard()
 
             findNavController().navigate(R.id.action_SearchFragment_to_Results)
         }
+    }
+
+    private fun View.hideKeyboard() {
+        val inputManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputManager.hideSoftInputFromWindow(windowToken, 0)
     }
 
 
@@ -70,10 +77,6 @@ class SearchFragment : Fragment() {
         val filteredList = appListStorage.filterListByName(query)
         gameListAdapter = GameListAdapter(filteredList)
         binding.gameList.adapter = gameListAdapter
-        val myList = java.util.ArrayList(filteredList)
-        for (i in myList) {
-            Log.d("myList", "item in adapterList: $i")
-        }
         Log.d("SearchFragment", "Filtered list size: ${filteredList.size}")
     }
 

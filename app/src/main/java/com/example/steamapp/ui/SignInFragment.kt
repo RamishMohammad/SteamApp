@@ -66,16 +66,17 @@ class SignInFragment : Fragment() {
                 Log.d(TAG, "Username: ${user?.username}, Password: ${user?.password}")
                 if (user != null) {
                     // Valid user
-                    Log.d(TAG, "User login successful")
+                    val snack = Snackbar.make(it,"Successful Login",Snackbar.LENGTH_LONG)
+                    snack.show()
                     val url = "${SteamWebService.BASE_URL}ISteamUser/GetPlayerSummaries/v2/?key=${SteamWebService.API_KEY}&steamids=$steamid"
+                    Log.d(TAG, "User login successful")
                     Log.d(TAG, "API URL: $url")
-                    // TODO: Handle the response accordingly
+
                 } else {
                     // Invalid user
-                    Log.d(TAG, "Invalid username or password")
-                    // TODO: Handle the response accordingly
                     val snack = Snackbar.make(it,"Invalid User",Snackbar.LENGTH_LONG)
                     snack.show()
+                    Log.d(TAG, "Invalid username or password")
                 }
             }
             it.hideKeyboard()
